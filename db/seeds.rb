@@ -1,10 +1,10 @@
 require 'faker'
 
-PASSWORD = "111111".freeze
+PASSWORD = '111111'.freeze
 
-puts "Creating fake administrators..."
+puts 'Creating fake administrators...'
 
-n = 1 
+n = 1
 3.times do
   Administrator.create!(
     first_name: Faker::Name.first_name,

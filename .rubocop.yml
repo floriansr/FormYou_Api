@@ -2,8 +2,10 @@ AllCops:
   Exclude:
     - "bin/bundle"
     - "config/**/*"
-    - "db/schema.rb"
+    - "db/**/*"
     - "app/channels/**/*"
+    - "test/**/*"
+    - "spec/**/*"
 
 # Styles
 Style/Documentation:

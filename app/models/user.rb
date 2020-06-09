@@ -6,5 +6,5 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtBlacklist
 
   validates :username, presence: true
-  
+
 end

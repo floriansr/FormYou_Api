@@ -1,4 +1,5 @@
 class CreateAdministrators < ActiveRecord::Migration[6.0]
+
   def change
     create_table :administrators do |t|
       t.string :first_name, null: false
@@ -8,4 +9,5 @@ class CreateAdministrators < ActiveRecord::Migration[6.0]
     end
     add_index :administrators, :validated
   end
+
 end
