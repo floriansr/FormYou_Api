@@ -17,6 +17,7 @@ Devise.setup do |config|
     # config.navigational_formats = [:json]
     jwt.request_formats = {
       user: [:json],
+      administrator: [:json]
     }
   end
 
