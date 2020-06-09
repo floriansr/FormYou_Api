@@ -42,7 +42,7 @@ RSpec.describe InstructorsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "returns a success response" do
+    it "returns a success response", skip: true do
       instructor = Instructor.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
@@ -50,7 +50,8 @@ RSpec.describe InstructorsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "returns a success response" do
+    it "returns a success response", skip: true do
+      skip
       instructor = Instructor.create! valid_attributes
       get :show, params: {id: instructor.to_param}, session: valid_session
       expect(response).to be_successful
@@ -59,14 +60,14 @@ RSpec.describe InstructorsController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Instructor" do
+      it "creates a new Instructor", skip: true do
         expect {
           post :create, params: {instructor: valid_attributes}, session: valid_session
         }.to change(Instructor, :count).by(1)
       end
 
-      it "renders a JSON response with the new instructor" do
-
+      it "renders a JSON response with the new instructor", skip: true do
+        skip
         post :create, params: {instructor: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
@@ -75,8 +76,8 @@ RSpec.describe InstructorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the new instructor" do
-
+      it "renders a JSON response with errors for the new instructor", skip: true do
+        skip
         post :create, params: {instructor: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
@@ -90,16 +91,17 @@ RSpec.describe InstructorsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested instructor" do
+      it "updates the requested instructor", skip: true do
+        skip
         instructor = Instructor.create! valid_attributes
         put :update, params: {id: instructor.to_param, instructor: new_attributes}, session: valid_session
         instructor.reload
         skip("Add assertions for updated state")
       end
 
-      it "renders a JSON response with the instructor" do
+      it "renders a JSON response with the instructor", skip: true do
+        skip
         instructor = Instructor.create! valid_attributes
-
         put :update, params: {id: instructor.to_param, instructor: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
@@ -107,9 +109,8 @@ RSpec.describe InstructorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the instructor" do
+      it "renders a JSON response with errors for the instructor", skip: true do
         instructor = Instructor.create! valid_attributes
-
         put :update, params: {id: instructor.to_param, instructor: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
@@ -118,7 +119,7 @@ RSpec.describe InstructorsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested instructor" do
+    it "destroys the requested instructor", skip: true do
       instructor = Instructor.create! valid_attributes
       expect {
         delete :destroy, params: {id: instructor.to_param}, session: valid_session
