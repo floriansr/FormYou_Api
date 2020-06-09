@@ -1,5 +1,7 @@
 ### Endpoints
 
+prod base url: https://form-you-back.herokuapp.com
+
 ##### Public, without token
 
 **POST /users.json** => sign up
