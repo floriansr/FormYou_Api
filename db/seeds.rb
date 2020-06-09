@@ -2,20 +2,17 @@ require 'faker'
 
 PASSWORD = '111111'.freeze
 
-Administrator.destroy_all
-Instructor.destroy_all
-
-puts 'Clearing previous records...'
+puts 'Deleting previous records...'
 
 n = 1
 3.times do
+
   Administrator.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: "seededadmin#{n}@yopmail.com",
+    email: "seededadministrator#{n}@yopmail.com",
     password: PASSWORD
   )
-
   Instructor.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -26,5 +23,13 @@ n = 1
   n += 1
 end
 
+10.times do
+  Course.create!(
+    title: Faker::Educator.course_name,
+    instructor: Instructor.all.sample
+  )
+end
+
 puts "#{Administrator.count} admin profiles created."
 puts "#{Instructor.count} instructors created."
+puts "#{Course.count} courses created."
