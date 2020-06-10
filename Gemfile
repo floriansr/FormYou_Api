@@ -5,6 +5,7 @@ ruby '2.7.1'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise-jwt', '~> 0.6.0'
+gem 'faker'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
@@ -14,7 +15,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails', '~> 3.6'
   gem 'rubocop', '>= 0.85.0'
 end
