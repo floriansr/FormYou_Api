@@ -51,7 +51,7 @@ Layout/IndentationWidth:
   Width: 2
 
 Layout/LineLength:
-  Max: 100
+  Max: 120
 
 Layout/IndentationStyle:
   Enabled: false

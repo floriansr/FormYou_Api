@@ -44,8 +44,16 @@ end
   )
 end
 
+10.times do 
+  JoinTableCourseCategory.create(
+    course: Course.all.sample,
+    category: Category.all.sample
+  )
+end
+
 puts "#{Administrator.count} admin profiles created."
 puts "#{Instructor.count} instructors created."
 puts "#{Student.count} students created."
 puts "#{Course.count} courses created."
 puts "#{Category.count} categories created."
+puts "#{JoinTableCourseCategory.count} relations between courses and categories created."
