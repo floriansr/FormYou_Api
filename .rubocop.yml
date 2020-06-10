@@ -9,6 +9,9 @@ AllCops:
     - "tmp/**/*"
 
 # Styles
+Style/GuardClause:
+  MinBodyLength: 5
+
 Style/Documentation:
   Enabled: false
 
