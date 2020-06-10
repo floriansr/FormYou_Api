@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   respond_to :json
 
   def sanitize_devise_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name])
   end
 
 end
