@@ -7,6 +7,7 @@ Administrator.destroy_all
 Instructor.destroy_all
 Student.destroy_all
 Category.destroy_all
+Room.destroy_all
 
 n = 1
 3.times do
@@ -33,7 +34,9 @@ n = 1
     name: Faker::Educator.unique.subject,
     color_code: Faker::Color.unique.hex_color
   )
-
+  Room.create!(
+    name: "Room #{Faker::Movies::StarWars.unique.droid}"
+  )
   n += 1
 end
 
@@ -57,3 +60,4 @@ puts "#{Student.count} students created."
 puts "#{Course.count} courses created."
 puts "#{Category.count} categories created."
 puts "#{JoinTableCourseCategory.count} relations between courses and categories created."
+puts "#{Room.count} rooms created."
