@@ -1,5 +1,5 @@
 require "rails_helper"
-
+=begin
 RSpec.describe StudentsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
@@ -28,3 +28,4 @@ RSpec.describe StudentsController, type: :routing do
     end
   end
 end
+=end
