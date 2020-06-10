@@ -8,6 +8,6 @@ class Instructor < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_many :courses
+  has_many :courses, dependent: :destroy
 
 end
