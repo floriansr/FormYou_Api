@@ -6,6 +6,7 @@ puts 'Deleting previous records...'
 Administrator.destroy_all
 Instructor.destroy_all
 Student.destroy_all
+Category.destroy_all
 
 n = 1
 3.times do
@@ -28,6 +29,10 @@ n = 1
     email: "seededstudent#{n}@yopmail.com",
     password: PASSWORD
   )
+  Category.create!(
+    name: Faker::Educator.unique.subject,
+    color_code: Faker::Color.unique.hex_color
+  )
 
   n += 1
 end
@@ -43,3 +48,4 @@ puts "#{Administrator.count} admin profiles created."
 puts "#{Instructor.count} instructors created."
 puts "#{Student.count} students created."
 puts "#{Course.count} courses created."
+puts "#{Category.count} categories created."
