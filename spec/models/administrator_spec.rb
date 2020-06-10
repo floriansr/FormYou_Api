@@ -9,7 +9,6 @@ describe 'Administrator model', type: :model do
       password: '111111'
     )
     expect(admin).to be_valid
-    puts admin.validated
     expect(admin.validated).to be false
   end
 

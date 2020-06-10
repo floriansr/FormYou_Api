@@ -9,7 +9,6 @@ describe 'Instructor model', type: :model do
       password: '111111'
     )
     expect(instructor).to be_valid
-    puts instructor.validated
     expect(instructor.validated).to be false
   end
 
