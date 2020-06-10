@@ -18,7 +18,8 @@ Devise.setup do |config|
     jwt.request_formats = {
       user: [:json],
       administrator: [:json],
-      instructor: [:json]
+      instructor: [:json],
+      student: [:json]
     }
   end
 

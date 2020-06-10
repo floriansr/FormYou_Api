@@ -22,11 +22,11 @@ require 'rails_helper'
 # expectations of assigns and templates rendered. These features have been
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
-=begin
-RSpec.describe CoursesController, type: :controller do
+
+RSpec.describe StudentsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Course. As you add validations to Course, be sure to
+  # Student. As you add validations to Student, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe CoursesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # CoursesController. Be sure to keep this updated too.
+  # StudentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      course = Course.create! valid_attributes
+      student = Student.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -51,33 +51,33 @@ RSpec.describe CoursesController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      course = Course.create! valid_attributes
-      get :show, params: {id: course.to_param}, session: valid_session
+      student = Student.create! valid_attributes
+      get :show, params: {id: student.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Course" do
+      it "creates a new Student" do
         expect {
-          post :create, params: {course: valid_attributes}, session: valid_session
-        }.to change(Course, :count).by(1)
+          post :create, params: {student: valid_attributes}, session: valid_session
+        }.to change(Student, :count).by(1)
       end
 
-      it "renders a JSON response with the new course" do
+      it "renders a JSON response with the new student" do
 
-        post :create, params: {course: valid_attributes}, session: valid_session
+        post :create, params: {student: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(course_url(Course.last))
+        expect(response.location).to eq(student_url(Student.last))
       end
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the new course" do
+      it "renders a JSON response with errors for the new student" do
 
-        post :create, params: {course: invalid_attributes}, session: valid_session
+        post :create, params: {student: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -90,27 +90,27 @@ RSpec.describe CoursesController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested course" do
-        course = Course.create! valid_attributes
-        put :update, params: {id: course.to_param, course: new_attributes}, session: valid_session
-        course.reload
+      it "updates the requested student" do
+        student = Student.create! valid_attributes
+        put :update, params: {id: student.to_param, student: new_attributes}, session: valid_session
+        student.reload
         skip("Add assertions for updated state")
       end
 
-      it "renders a JSON response with the course" do
-        course = Course.create! valid_attributes
+      it "renders a JSON response with the student" do
+        student = Student.create! valid_attributes
 
-        put :update, params: {id: course.to_param, course: valid_attributes}, session: valid_session
+        put :update, params: {id: student.to_param, student: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
       end
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the course" do
-        course = Course.create! valid_attributes
+      it "renders a JSON response with errors for the student" do
+        student = Student.create! valid_attributes
 
-        put :update, params: {id: course.to_param, course: invalid_attributes}, session: valid_session
+        put :update, params: {id: student.to_param, student: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -118,13 +118,12 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested course" do
-      course = Course.create! valid_attributes
+    it "destroys the requested student" do
+      student = Student.create! valid_attributes
       expect {
-        delete :destroy, params: {id: course.to_param}, session: valid_session
-      }.to change(Course, :count).by(-1)
+        delete :destroy, params: {id: student.to_param}, session: valid_session
+      }.to change(Student, :count).by(-1)
     end
   end
 
 end
-=end

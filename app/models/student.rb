@@ -1,4 +1,4 @@
-class Instructor < ApplicationRecord
+class Student < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -7,7 +7,5 @@ class Instructor < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-
-  has_many :courses, dependent: :destroy
 
 end
