@@ -6,6 +6,7 @@ AllCops:
     - "app/channels/**/*"
     - "test/**/*"
     - "spec/**/*"
+    - "tmp/**/*"
 
 # Styles
 Style/Documentation:
