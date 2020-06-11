@@ -3,6 +3,7 @@ require 'faker'
 PASSWORD = '111111'.freeze
 
 puts 'Deleting previous records...'
+Session.destroy_all
 Administrator.destroy_all
 Instructor.destroy_all
 Student.destroy_all
@@ -54,6 +55,17 @@ end
   )
 end
 
+Course.all.each do |c|
+  10.times do
+    Session.create(
+      course: c,
+      session_date: Faker::Date.between(from: Date.today, to: 3.months.from_now),
+      session_time: "09:00:00",
+      room: Room.all.sample
+    )
+  end
+end
+
 puts "#{Administrator.count} admin profiles created."
 puts "#{Instructor.count} instructors created."
 puts "#{Student.count} students created."
@@ -61,3 +73,4 @@ puts "#{Course.count} courses created."
 puts "#{Category.count} categories created."
 puts "#{JoinTableCourseCategory.count} relations between courses and categories created."
 puts "#{Room.count} rooms created."
+puts "#{Session.count} sessions created."

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
   resources :join_table_course_categories
   devise_for :students
   resources :students
