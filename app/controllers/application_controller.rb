@@ -19,4 +19,15 @@ class ApplicationController < ActionController::API
     }
   end
 
+  def session_availability(session)
+    # TODO: change 20 to a class constant
+    # current difficulty: constant isn't regonized
+    # to reproduce, set a Session class constant, call here, see rails server
+    { "availability": (20 - session.students.count) }
+  end
+
+  def session_info(session)
+    session.attributes.merge(session_availability(session))
+  end
+
 end
