@@ -3,6 +3,7 @@ require 'faker'
 PASSWORD = '111111'.freeze
 
 puts 'Deleting previous records...'
+Inscription.destroy_all
 Session.destroy_all
 Administrator.destroy_all
 Instructor.destroy_all
@@ -25,12 +26,6 @@ n = 1
     email: "seededinstructor#{n}@yopmail.com",
     password: PASSWORD
   )
-  Student.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: "seededstudent#{n}@yopmail.com",
-    password: PASSWORD
-  )
   Category.create!(
     name: Faker::Educator.unique.subject,
     color_code: Faker::Color.unique.hex_color
@@ -40,6 +35,22 @@ n = 1
   )
   n += 1
 end
+
+m = 1
+30.times do
+  Student.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "seededstudent#{m}@yopmail.com",
+    password: PASSWORD
+  )
+  m += 1
+end
+
+puts "#{Administrator.count} admin profiles created."
+puts "#{Instructor.count} instructors created."
+puts "#{Student.count} students created."
+puts "#{Room.count} rooms created."
 
 10.times do
   Course.create!(
@@ -55,6 +66,10 @@ end
   )
 end
 
+puts "#{Course.count} courses created."
+puts "#{Category.count} categories created."
+puts "#{JoinTableCourseCategory.count} relations between courses and categories created."
+
 Course.all.each do |c|
   10.times do
     Session.create(
@@ -66,11 +81,14 @@ Course.all.each do |c|
   end
 end
 
-puts "#{Administrator.count} admin profiles created."
-puts "#{Instructor.count} instructors created."
-puts "#{Student.count} students created."
-puts "#{Course.count} courses created."
-puts "#{Category.count} categories created."
-puts "#{JoinTableCourseCategory.count} relations between courses and categories created."
-puts "#{Room.count} rooms created."
+Session.all.each do |s|
+  40.times do
+    Inscription.create(
+      session: s,
+      student: Student.all.sample
+    )
+  end
+end
+
 puts "#{Session.count} sessions created."
+puts "#{Inscription.count} inscriptions created."
