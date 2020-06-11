@@ -47,7 +47,7 @@ For the moment, no auth required for the following requests
 
 **GET /api/v1/courses.json**
 
-view all courses
+view all courses, with category, instructor and sessions
 
 **POST /api/v1/courses.json**
 
@@ -64,7 +64,11 @@ data-form body
 
 **GET /api/v1/courses/:id.json**
 
-view a specified course
+view a specified course, with category, instructor and sessions
+
+**GET /api/v1/courses/:id/sessions.json**
+
+view the list of sessions for specified course, same info as in as sessions index
 
 **PATCH or PUT /api/v1/courses/:id.json**
 
@@ -116,6 +120,8 @@ data-form body
 view specified session, with availability info
 
 **PATCH or PUT /api/v1/sessions/:id.json**
+
+same body as post
 
 **DELETE /api/v1/sessions/:id.json**
 
