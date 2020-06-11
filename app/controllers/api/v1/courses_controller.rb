@@ -1,10 +1,14 @@
 class Api::V1::CoursesController < Api::ApiController
 
-  before_action :set_course, only: %i[show update destroy]
+  before_action :set_course, only: %i[show sessions update destroy]
 
   def index
     @courses = Course.all.map { |course| course_info(course) }
     render json: @courses
+  end
+
+  def sessions
+    render json: @course.sessions.map { |s| session_info(s) }
   end
 
   def show
@@ -37,7 +41,9 @@ class Api::V1::CoursesController < Api::ApiController
   private
 
   def set_course
-    @course = Course.find(params[:id])
+    id = params[:id] || params[:course_id]
+    @course = Course.find(id)
+    puts @course
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Record not found', message: 'The course ID you provided is invalid.' }
   end
@@ -50,6 +56,7 @@ class Api::V1::CoursesController < Api::ApiController
     course.attributes
           .merge(instructor: course.instructor)
           .merge(categories: course.categories)
+          .merge(session: course.sessions.map { |s| session_info(s) })
   end
 
   def errors_response(course)
