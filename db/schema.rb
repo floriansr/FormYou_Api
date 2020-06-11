@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 2020_06_10_171534) do
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_rooms_on_name"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false

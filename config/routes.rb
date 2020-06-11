@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :students
   resources :students
   resources :categories
+  resources :rooms
   devise_for :administrators
   resources :administrators
   devise_for :instructors
