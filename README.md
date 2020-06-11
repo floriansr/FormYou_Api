@@ -17,6 +17,7 @@ prod base url: https://form-you-back.herokuapp.com
 can get a token if success
 
 **POST /users/sign_in.json** => sign in
+
 ```
 {"user": {
 	"email": "something@yopmail.com",
@@ -38,7 +39,8 @@ can get a token if success
 
 **DELETE /users.json** => sign self out
 
-* * *
+---
+
 ### Requests on courses
 
 For the moment, no auth required for the following requests
@@ -47,11 +49,12 @@ For the moment, no auth required for the following requests
 
 view all courses
 
-**POST /api/v1/courses.json**   
+**POST /api/v1/courses.json**
 
 create a new course
 
 data-form body
+
 ```
 {"course":{
   "title": "something", <= need to be unique, case insensitive
@@ -68,6 +71,7 @@ view a specified course
 update a specified course
 
 data-form body
+
 ```
 {"course":{
   "title": "something",
@@ -78,3 +82,41 @@ data-form body
 **DELETE /api/v1/courses/:id.json**
 
 delete a specified course
+
+---
+
+### Requests on courses
+
+For the moment, no auth required for the following requests
+
+**GET /api/v1/sessions.json**
+
+view all sessions on all courses, with availability info
+
+**POST /api/v1/sessions.json**
+
+create a new session
+
+data-form body
+
+```
+{
+	"session":{
+  "course_id": "n",
+	"room_id":"m",
+	"session_date": "20200623" <= Can take this format or any other comment date format string
+	"session_time": "10:30:00" <= so far we only knows it takes this format of string
+}}
+```
+
+**The `session_time` in response comes with a date, which is quite early, the Front will need to parse only the hours/minutes/second part from this "time" object**s
+
+**GET /api/v1/sessions/:id.json**
+
+view specified session, with availability info
+
+**PATCH or PUT /api/v1/sessions/:id.json**
+
+**DELETE /api/v1/sessions/:id.json**
+
+delete specified session
