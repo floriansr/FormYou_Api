@@ -17,7 +17,7 @@ class Api::V1::CoursesController < Api::ApiController
       render json: course_info(@course), status: :created # , location: @course
       # TODO: understand what location means and decide whether to get rid of it or do sth else
     else
-      render json: errors_response(@course), status: :unprocessable_entity
+      render json: readable_errors(@course), status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class Api::V1::CoursesController < Api::ApiController
     if @course.update(course_params)
       render json: course_info(@course)
     else
-      render json: errors_response(@course), status: :unprocessable_entity
+      render json: readable_errors(@course), status: :unprocessable_entity
     end
   end
 
@@ -47,7 +47,9 @@ class Api::V1::CoursesController < Api::ApiController
   end
 
   def course_info(course)
-    course.attributes.merge(instructor: course.instructor)
+    course.attributes
+          .merge(instructor: course.instructor)
+          .merge(categories: course.categories)
   end
 
   def errors_response(course)
