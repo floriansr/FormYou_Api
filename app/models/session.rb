@@ -6,6 +6,8 @@ class Session < ApplicationRecord
 
   belongs_to :course
   belongs_to :room
+  has_many :inscriptions
+  has_many :students, through: :inscriptions
 
   validates :session_date, presence: true
   validates :session_time, presence: true,
