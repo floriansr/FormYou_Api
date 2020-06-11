@@ -1,19 +1,15 @@
 class Api::V1::SessionsController < Api::ApiController
 
+
   before_action :set_session, only: %i[show update destroy]
 
   def index
-<<<<<<< HEAD
-    @sessions = Session.all
-
-=======
     @sessions = Session.all.map { |s| session_info(s) }
->>>>>>> 285ea0d... [controller]
     render json: @sessions
   end
 
   def show
-    render json: @session
+    render json: session_info(@session)
   end
 
   def create
@@ -24,20 +20,21 @@ class Api::V1::SessionsController < Api::ApiController
       # TODO: understand what the following means
       # above line used to have `, location: session_info(@session)`
     else
-      render json: @session.errors, status: :unprocessable_entity
+      render json: readable_errors(@session), status: :unprocessable_entity
     end
   end
 
   def update
     if @session.update(session_params)
-      render json: @session
+      render json: session_info(@session)
     else
-      render json: @session.errors, status: :unprocessable_entity
+      render json: readable_errors(@session), status: :unprocessable_entity
     end
   end
 
   def destroy
     @session.destroy
+    render json: { id: @session.id, confirmation: 'Session deleted' }
   end
 
   private
@@ -50,8 +47,6 @@ class Api::V1::SessionsController < Api::ApiController
     params.require(:session).permit(:course_id, :session_date, :session_time, :room_id)
   end
 
-<<<<<<< HEAD
-=======
   def session_availability(session)
     # TODO: change 20 to a class constant
     # current difficulty: constant isn't regonized
@@ -63,5 +58,4 @@ class Api::V1::SessionsController < Api::ApiController
     session.attributes.merge(session_availability(session))
   end
 
->>>>>>> 285ea0d... [controller]
 end
