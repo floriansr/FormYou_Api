@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :inscriptions
-  resources :sessions
   resources :join_table_course_categories
   devise_for :students
   resources :students
@@ -15,7 +14,8 @@ Rails.application.routes.draw do
 	 namespace :api do
  		 namespace :v1 do
     		resources :users, except: %i[create new edit]
-				resources :courses, except: %i[new edit]
+				resources :courses
+        resources :sessions
   		end
  	end
 end
